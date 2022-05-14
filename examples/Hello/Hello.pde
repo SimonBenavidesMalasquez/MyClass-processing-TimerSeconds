@@ -1,19 +1,42 @@
-import template.library.*;
-
-HelloLibrary hello;
+import mylibrary.TimerSeconds.*; 
+ 
+TemporizadorSeconds timerSeconds;
 
 void setup() {
-  size(400,400);
-  smooth();
-  
-  hello = new HelloLibrary(this);
-  
-  PFont font = createFont("",40);
-  textFont(font);
+ 
+     size(400,400);
+
+     // CLASE TEMPORIZADOR : 
+     timerSeconds = new TemporizadorSeconds(this);
+
 }
 
 void draw() {
-  background(0);
-  fill(255);
-  text(hello.sayHello(), 40, 200);
+ 
+    background(0);
+
+    // desactiva cuenta : 
+    timerSeconds.timer();
+ 
+    // Usamos estado : 
+    if( timerSeconds.getState() == true ){
+       
+       background(0,60,0);
+
+    }else{
+
+       background(0);
+    }
+
 }
+
+void mousePressed(){
+
+   // Activo 4 segundos : 
+   timerSeconds.setRunTimer(4); 
+
+}
+
+
+
+
